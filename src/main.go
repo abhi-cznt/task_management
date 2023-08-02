@@ -49,7 +49,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 func getTasks(w http.ResponseWriter, r *http.Request) {
 
 	// fmt.Println("I am tasks  page")
-	w.Header().Set("Content-Type", "application/")
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(tasks)
 
 }
@@ -67,7 +67,7 @@ func getTask(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if flag == false {
+	if !flag {
 		json.NewEncoder(w).Encode(map[string]string{"status": "error"})
 	}
 
